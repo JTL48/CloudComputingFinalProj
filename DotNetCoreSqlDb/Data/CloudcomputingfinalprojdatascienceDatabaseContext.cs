@@ -21,6 +21,7 @@ public partial class CloudcomputingfinalprojdatascienceDatabaseContext : DbConte
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<Transaction> Transactions { get; set; }
+    public virtual DbSet<Users> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=cloudcomputingfinalprojdatascience-server.database.windows.net,1433;Initial Catalog=cloudcomputingfinalprojdatascience-database;User ID=cloudcomputingfinalprojdatascience-server-admin;Password=4BJN2SH4T2FOB12Q$");
