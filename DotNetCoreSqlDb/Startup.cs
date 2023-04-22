@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreSqlDb.Models;
+using DotNetCoreSqlDb.Data;
 
 namespace DotNetCoreSqlDb
 {
@@ -28,7 +29,7 @@ namespace DotNetCoreSqlDb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MyDatabaseContext>(options =>
+            services.AddDbContext<CloudcomputingfinalprojdatascienceDatabaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
         }
 
