@@ -28,7 +28,7 @@ namespace DotNetCoreSqlDb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MyDatabaseContext>(options =>
+            services.AddDbContext<cloudcomputingfinalprojdatasciencedatabaseContext>(options =>                    //Note the context was MyDatabaseContext
                     options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
         }
 
@@ -57,7 +57,7 @@ namespace DotNetCoreSqlDb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Todos}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Index}/{id?}");
             });
         }
     }
