@@ -1,0 +1,66 @@
+﻿@model DotNetCoreSqlDb.Models.Household
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HshdNum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HshdNum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.L)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.L)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AgeRange)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AgeRange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marital)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marital)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Homeowner)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Homeowner)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HshdComposition)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HshdComposition)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HhSize)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HhSize)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Children)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Children)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.HshdNum">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

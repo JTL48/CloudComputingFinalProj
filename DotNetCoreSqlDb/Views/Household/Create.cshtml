@@ -1,0 +1,73 @@
+﻿@model DotNetCoreSqlDb.Models.Household
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<p>Please create a household number larger than 5000</p>
+<h4>New Household</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HshdNum" class="control-label"></label>
+                <input asp-for="HshdNum" class="form-control" />
+                <span asp-validation-for="HshdNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="L" class="control-label"></label>
+                <input asp-for="L" class="form-control" />
+                <span asp-validation-for="L" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgeRange" class="control-label"></label>
+                <input asp-for="AgeRange" class="form-control" />
+                <span asp-validation-for="AgeRange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marital" class="control-label"></label>
+                <input asp-for="Marital" class="form-control" />
+                <span asp-validation-for="Marital" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncomeRange" class="control-label"></label>
+                <input asp-for="IncomeRange" class="form-control" />
+                <span asp-validation-for="IncomeRange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Homeowner" class="control-label"></label>
+                <input asp-for="Homeowner" class="form-control" />
+                <span asp-validation-for="Homeowner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HshdComposition" class="control-label"></label>
+                <input asp-for="HshdComposition" class="form-control" />
+                <span asp-validation-for="HshdComposition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HhSize" class="control-label"></label>
+                <input asp-for="HhSize" class="form-control" />
+                <span asp-validation-for="HhSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Children" class="control-label"></label>
+                <input asp-for="Children" class="form-control" />
+                <span asp-validation-for="Children" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

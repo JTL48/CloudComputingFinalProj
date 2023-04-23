@@ -9,35 +9,35 @@ using DotNetCoreSqlDb.Models;
 
 namespace DotNetCoreSqlDb.Controllers
 {
-    public class UsersController : Controller
+    public class HouseholdController : Controller
     {
         private readonly cloudcomputingfinalprojdatasciencedatabaseContext _context;
 
-        public UsersController(cloudcomputingfinalprojdatasciencedatabaseContext context)
+        public HouseholdController(cloudcomputingfinalprojdatasciencedatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: Todos
+        // GET: User
         public async Task<IActionResult> Index()
         {
-            var todos = new List<User>();
+            var households = new List<Household>();
 
             // This allows the home page to load if migrations have not been run yet.
             try
             {
-                todos = await _context.Users.ToListAsync();
+                households = await _context.Households.ToListAsync();
             }
             catch (Exception e)
             {
 
-                return View(todos);
+                return View(households);
             }
 
-            return View(todos);
+            return View(households);
         }
 
-        // GET: Todos/Details/5
+        // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,62 +45,62 @@ namespace DotNetCoreSqlDb.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (todo == null)
+            var households = await _context.Households
+                .FirstOrDefaultAsync(m => m.HshdNum == id);
+            if (households == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(households);
         }
 
-        // GET: Todos/Create
+        // GET: User/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Todos/Create
+        // POST: User/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Email,Username,Password")] User user)
+        public async Task<IActionResult> Create([Bind("HshdNum,L,AgeRange,Marital,IncomeRange,Homeowner,HshdComposition,HhSize,Children")] Household households)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(households);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(households);
         }
 
-        // GET: Todos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: User/Edit/5
+        public async Task<IActionResult> Edit(short? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var todo = await _context.Users.FindAsync(id);
-            if (todo == null)
+            var households = await _context.Households.FindAsync(id);
+            if (households == null)
             {
                 return NotFound();
             }
-            return View(todo);
+            return View(households);
         }
 
-        // POST: Todos/Edit/5
+        // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] User todo)
+        public async Task<IActionResult> Edit(int id, [Bind("HshdNum,L,AgeRange,Marital,IncomeRange,Homeowner,HshdComposition,HhSize,Children")] Household households)
         {
-            if (id != todo.Id)
+            if (id != households.HshdNum)
             {
                 return NotFound();
             }
@@ -109,12 +109,12 @@ namespace DotNetCoreSqlDb.Controllers
             {
                 try
                 {
-                    _context.Update(todo);
+                    _context.Update(households);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TodoExists(todo.Id))
+                    if (!HouseHoldExists(households.HshdNum))
                     {
                         return NotFound();
                     }
@@ -125,41 +125,41 @@ namespace DotNetCoreSqlDb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(todo);
+            return View(households);
         }
 
-        // GET: Todos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: User/Delete/5
+        public async Task<IActionResult> Delete(short? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var todo = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (todo == null)
+            var households = await _context.Households
+                .FirstOrDefaultAsync(m => m.HshdNum == id);
+            if (households == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(households);
         }
 
-        // POST: Todos/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(short id)
         {
-            var todo = await _context.Users.FindAsync(id);
-            _context.Users.Remove(todo);
+            var households = await _context.Households.FindAsync(id);
+            _context.Households.Remove(households);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TodoExists(int id)
+        private bool HouseHoldExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Households.Any(e => e.HshdNum == id);
         }
     }
 }

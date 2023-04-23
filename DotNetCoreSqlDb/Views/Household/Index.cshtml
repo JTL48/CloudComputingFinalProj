@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DotNetCoreSqlDb.Models.Household>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Here is household data</h1>
+
+<p>
+    <a asp-action="Create">Add Household</a>
+</p>
+<p>Notice you can create new households, edit, view, or delte old ones</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HshdNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.L)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeRange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marital)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncomeRange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Homeowner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HshdComposition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HhSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Children)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.HshdNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.L)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.AgeRange)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Marital)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.IncomeRange)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Homeowner)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.HshdComposition)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.HhSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Children)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.HshdNum">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.HshdNum">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HshdNum">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
