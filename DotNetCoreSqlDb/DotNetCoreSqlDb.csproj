@@ -13,6 +13,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.0" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="7.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\MvcGrid\" />
   </ItemGroup>
 
 </Project>

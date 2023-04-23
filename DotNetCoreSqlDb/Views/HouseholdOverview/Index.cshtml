@@ -1,2 +1,64 @@
-﻿@model DotNetCoreSqlDb.Models.View.HouseholdOverviewView
+﻿@model IEnumerable<HouseholdOverviewView>
 
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <p>
+        @Html.Label("Search by HshdNum: ")
+        @Html.TextBox("searchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>HshdNum</th>
+            <th>L</th>
+            <th>Age Range</th>
+            <th>Marital</th>
+            <th>Income Range</th>
+            <th>Homeowner</th>
+            <th>Hshd Composition</th>
+            <th>HhSize</th>
+            <th>Children</th>
+            <th>ProductNum</th>
+            <th>Department</th>
+            <th>Commodity</th>
+            <th>BrandTy</th>
+            <th>Natural Organic Flag</th>
+            <th>Purchase</th>
+            <th>Spend</th>
+            <th>Units</th>
+            <th>StoreR</th>
+            <th>WeekNum</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(m => m.HshdNum.ToString().Contains(ViewBag.SearchString ?? "")))
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.HshdNum)</td>
+                <td>@Html.DisplayFor(modelItem => item.L)</td>
+                <td>@Html.DisplayFor(modelItem => item.AgeRange)</td>
+                <td>@Html.DisplayFor(modelItem => item.Marital)</td>
+                <td>@Html.DisplayFor(modelItem => item.IncomeRange)</td>
+                <td>@Html.DisplayFor(modelItem => item.Homeowner)</td>
+                <td>@Html.DisplayFor(modelItem => item.HshdComposition)</td>
+                <td>@Html.DisplayFor(modelItem => item.HhSize)</td>
+                <td>@Html.DisplayFor(modelItem => item.Children)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductNum)</td>
+                <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                <td>@Html.DisplayFor(modelItem => item.Commodity)</td>
+                <td>@Html.DisplayFor(modelItem => item.BrandTy)</td>
+                <td>@Html.DisplayFor(modelItem => item.NaturalOrganicFlag)</td>
+                <td>@Html.DisplayFor(modelItem => item.Purchase)</td>
+                <td>@Html.DisplayFor(modelItem => item.Spend)</td>
+                <td>@Html.DisplayFor(modelItem => item.Units)</td>
+                <td>@Html.DisplayFor(modelItem => item.StoreR)</td>
+                <td>@Html.DisplayFor(modelItem => item.WeekNum)</td>
+                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+            </tr>
+        }
+    </tbody>
+</table>
