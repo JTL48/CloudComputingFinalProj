@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreSqlDb.Models;
-using DotNetCoreSqlDb.Data;
 
 namespace DotNetCoreSqlDb.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly CloudcomputingfinalprojdatascienceDatabaseContext _context;
+        private readonly cloudcomputingfinalprojdatasciencedatabaseContext _context;
 
-        public UsersController(CloudcomputingfinalprojdatascienceDatabaseContext context)
+        public UsersController(cloudcomputingfinalprojdatasciencedatabaseContext context)
         {
             _context = context;
         }
@@ -22,7 +21,7 @@ namespace DotNetCoreSqlDb.Controllers
         // GET: Todos
         public async Task<IActionResult> Index()
         {
-            var todos = new List<Users>();
+            var todos = new List<User>();
 
             // This allows the home page to load if migrations have not been run yet.
             try
@@ -47,7 +46,7 @@ namespace DotNetCoreSqlDb.Controllers
             }
 
             var todo = await _context.Users
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (todo == null)
             {
                 return NotFound();
@@ -67,7 +66,7 @@ namespace DotNetCoreSqlDb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Email,Username,Password")] Users user)
+        public async Task<IActionResult> Create([Bind("ID,Email,Username,Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -99,9 +98,9 @@ namespace DotNetCoreSqlDb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Users todo)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] User todo)
         {
-            if (id != todo.ID)
+            if (id != todo.Id)
             {
                 return NotFound();
             }
@@ -115,7 +114,7 @@ namespace DotNetCoreSqlDb.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TodoExists(todo.ID))
+                    if (!TodoExists(todo.Id))
                     {
                         return NotFound();
                     }
@@ -138,7 +137,7 @@ namespace DotNetCoreSqlDb.Controllers
             }
 
             var todo = await _context.Users
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (todo == null)
             {
                 return NotFound();
@@ -160,7 +159,7 @@ namespace DotNetCoreSqlDb.Controllers
 
         private bool TodoExists(int id)
         {
-            return _context.Users.Any(e => e.ID == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

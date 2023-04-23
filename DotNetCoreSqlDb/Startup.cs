@@ -12,7 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreSqlDb.Models;
-using DotNetCoreSqlDb.Data;
 
 namespace DotNetCoreSqlDb
 {
